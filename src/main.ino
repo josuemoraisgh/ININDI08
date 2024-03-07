@@ -5,13 +5,18 @@
 #include <digitalFilter.h>
 #include <math.h>
 
-#define pinANALOG A5                        //Configura o pino de leitura do LUXÍMETRO
-#define pinPWM 6                            //Configura o pino de Saida do PWM
-#define PERIODO 100                         //Em us 100ms
+#define pinANALOG A5      //Configura o pino de leitura do LUXÍMETRO
+#define pinPWM 6          //Configura o pino de Saida do PWM
+#define ANALOG_INTERVAL 1 // analog read interval (milliseconds)
+#define PWM_INTERVAL 1    // analog read interval (milliseconds)
+#define FREQ1 (10/(1000*PWM_INTERVAL)) //Em Hz/(1000*PWM_INTERVAL)
+#define FREQ2 (6/(1000*PWM_INTERVAL))  //Em Hz/(1000*PWM_INTERVAL)
 
-byte count = 0;
+
+unsigned long count = 0;
+byte time = 0;
 unsigned int amplitude = 127;
-byte bLeitura[4] = {0, 0, 0, 0};
+
 
 #define FILTER_ORDER1 57
 DigitalFilter filter1;
@@ -75,26 +80,32 @@ const double filter_taps1[FILTER_ORDER1] = {
   0.0001592
 };
 
-void analogReadFunc()                      // Faz a leitura do sinal Analogico
+void analogReadFunc()                      // Faz a leitura do sinal Analógico
 { 
-  DigitalFilter_put(&filter1,abs(analogRead(pinANALOG)-512));
-  Serial.println(DigitalFilter_get(&filter1));//Escreve em RMS na serial
+  const int analog_Value = analogRead(pinANALOG) - 512;
+  DigitalFilter_put(&filter1, analog_Value);
+  count += ANALOG_INTERVAL;
+  Serial.print(">amp:");
+  Serial.print(count);  
+  Serial.print(":");  
+  Serial.print(DigitalFilter_get(&filter1));
+  Serial.println("§Volts|g");
 }
 
 void pwmFunc()                            //Faz a leitura e escrita da serial
 { 
-  //analogWrite(pinPWM,100*sin(2*PI*count/PERIODO)+27*sin(2*PI*count/16)+127);
-  analogWrite(pinPWM,127*sin(2*PI*count/PERIODO)+127.5);
-  if(++count==PERIODO) count=0;
+  //analogWrite(pinPWM,100*sin(2*PI*FREQ1*time)+27*sin(2*PI*FREQ2*time)+127);
+  analogWrite(pinPWM,127*sin(2*PI*FREQ1*time)+127.5);
+  if(++time==(1/FREQ1)) time=0;
 }
 
-void setup()                              // Codigo de configuração
+void setup()                              // Código de configuração
 {
   Serial.begin(9600);
   pinMode(pinANALOG, INPUT);
   pinMode(pinPWM, OUTPUT);
   DigitalFilter_init(&filter1,FILTER_ORDER1,filter_taps1);    
-  threadSetup(analogReadFunc,1,pwmFunc,1,NULL);//parametros:funcão,intervalo,funcão,intervalo,...,NULL  
+  threadSetup(analogReadFunc,ANALOG_INTERVAL,pwmFunc,PWM_INTERVAL,NULL);//parametros:funcão,intervalo,funcão,intervalo,...,NULL  
 }
 
 void loop(){}

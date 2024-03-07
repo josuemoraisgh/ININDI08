@@ -1,11 +1,11 @@
-<circuit version="" rev="1751" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+<circuit version="" rev="1751" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="1" >
 
 <item itemtype="Capacitor" CircId="Capacitor-31" mainComp="false" ShowProp="Capacitance" Show_id="false" Show_Val="true" Pos="-428,-276" rotation="180" hflip="1" vflip="1" label="Capacitor-42" idLabPos="-16,-24" labelrot="0" valLabPos="12,20" valLabRot="-180" Capacitance="7.95 µF" Resistance="1e-06 Ω" InitVolt="0 V" AutoStep="0 _Steps" />
 
 <item itemtype="Resistor" CircId="Resistor-29" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-404,-236" rotation="0" hflip="1" vflip="1" label="Resistor-41" idLabPos="-12,-20" labelrot="0" valLabPos="-9,-19" valLabRot="0" Resistance="1 kΩ" />
 
 <item itemtype="Subcircuit" CircId="Uno-19" mainComp="false" Show_id="true" Show_Val="false" Pos="-188,-312" rotation="0" hflip="1" vflip="1" label="Arduino Uno-1" idLabPos="91,-18" labelrot="0" valLabPos="0,0" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="19_mega328-109" Frequency="16 MHz" Auto_Load="false" saveEepr="true" eeprom="0,0,0,0,0,0,0,0,0,0,0," SerialMon="-1" />
+<mainCompProps MainCompId="19_mega328-109" Frequency="16 MHz" Program="../.pio/build/uno/firmware.hex" Auto_Load="false" saveEepr="true" eeprom="0,0,0,0,0,0,0,0,0,0,0,0," SerialMon="-1" />
 </item>
 
 <item itemtype="Resistor" CircId="Resistor-18" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-356,-236" rotation="0" hflip="1" vflip="1" label="Resistor-41" idLabPos="-12,-20" labelrot="0" valLabPos="-9,-18" valLabRot="0" Resistance="1 kΩ" />
@@ -30,9 +30,7 @@
 
 <item itemtype="SerialPort" CircId="SerialPort-40" mainComp="false" Show_id="false" Show_Val="false" Pos="-148,-348" rotation="0" hflip="1" vflip="1" label="SerialPort-101" idLabPos="-34,-20" labelrot="0" valLabPos="0,0" valLabRot="0" Baudrate="9600 _Bauds" DataBits="8 _Bits" StopBits="1 _Bits" SerialMon="false" />
 
-<item itemtype="Oscope" CircId="Oscope-300" mainComp="false" Show_id="false" Show_Val="false" Pos="-404,-396" rotation="0" hflip="1" vflip="1" label="Oscope-300" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _Pixels" Basic_Y="135 _Pixels" BufferSize="600000 Samples" TimDiv="146691000000" TimPos="0,8791767480,8791767480,8791767480," VolDiv="0.245487,0.270058,0.270058,0.270058," Tunnels=",,,," Trigger="0" Filter="0.1 V" Trigger="0" AutoSC="0" Tracks="1" HideCh="false,false,false,false," VolPos="-1.23195,-0.00852933,-0.00852933,-0.00852933," />
-
-<item itemtype="Oscope" CircId="Oscope-368" mainComp="false" Show_id="false" Show_Val="false" Pos="-176,-8" rotation="0" hflip="1" vflip="1" label="Oscope-368" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _Pixels" Basic_Y="135 _Pixels" BufferSize="600000 Samples" TimDiv="578806025" TimPos="890603237,890603237,890603237,890603237," VolDiv="0.323451,0.323451,0.323451,0.323451," Tunnels=",,,," Trigger="0" Filter="0.1 V" Trigger="0" AutoSC="4" Tracks="1" HideCh="false,false,false,false," VolPos="-1.24381,-1.24381,-1.24381,-1.24381," />
+<item itemtype="Oscope" CircId="Oscope-368" mainComp="false" Show_id="false" Show_Val="false" Pos="-176,-8" rotation="0" hflip="1" vflip="1" label="Oscope-368" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _Pixels" Basic_Y="135 _Pixels" BufferSize="600000 Samples" TimDiv="4599196790" TimPos="0,61440000,6914045614,6914045614," VolDiv="0.24832,0.481756,0.323451,0.323451," Tunnels=",,,," Trigger="4" Filter="0.1 V" Trigger="4" AutoSC="4" Tracks="2" HideCh="false,false,false,false," VolPos="-1.2416,-1.09371,-1.24381,-1.24381," />
 
 <item itemtype="Node" CircId="Node-32" mainComp="false" Pos="-380,-236" />
 
@@ -48,7 +46,9 @@
 
 <item itemtype="Node" CircId="Node-302" mainComp="false" Pos="-508,-228" />
 
-<item itemtype="Node" CircId="Node-370" mainComp="false" Pos="-320,-236" />
+<item itemtype="Node" CircId="Node-375" mainComp="false" Pos="-556,-228" />
+
+<item itemtype="Node" CircId="Node-379" mainComp="false" Pos="-324,-236" />
 
 <item itemtype="Connector" uid="connector-371" startpinid="opAmp-16-inputNinv" endpinid="Node-30-0" pointList="-452,-236,-428,-236" />
 
@@ -86,24 +86,28 @@
 
 <item itemtype="Connector" uid="connector-388" startpinid="Capacitor-31-rPin" endpinid="Node-302-0" pointList="-444,-276,-508,-276,-508,-228" />
 
-<item itemtype="Connector" uid="connector-389" startpinid="Oscope-300-Pin0" endpinid="Node-302-1" pointList="-492,-444,-556,-444,-556,-228,-508,-228" />
-
 <item itemtype="Connector" uid="connector-390" startpinid="Node-302-2" endpinid="Node-11-0" pointList="-508,-228,-500,-228" />
 
 <item itemtype="Connector" uid="connector-391" startpinid="Resistor-9-rPin" endpinid="Uno-19-6" pointList="-212,-224,-204,-224,-204,-248,-180,-248" />
 
 <item itemtype="Connector" uid="connector-392" startpinid="Resistor-4-rPin" endpinid="Uno-19-5" pointList="-220,-296,-208,-296,-208,-256,-180,-256" />
 
-<item itemtype="Connector" uid="connector-393" startpinid="opAmp-10-output" endpinid="Node-370-0" pointList="-308,-236,-320,-236" />
-
-<item itemtype="Connector" uid="connector-394" startpinid="Oscope-368-Pin0" endpinid="Node-370-1" pointList="-264,-56,-320,-56,-320,-236" />
-
-<item itemtype="Connector" uid="connector-395" startpinid="Node-370-2" endpinid="Node-220-0" pointList="-320,-236,-332,-236" />
-
 <item itemtype="Connector" uid="connector-396" startpinid="Ground-6-Gnd" endpinid="Resistor-15-lPin" pointList="-252,-168,-252,-184" />
 
 <item itemtype="Connector" uid="Connector-397" startpinid="SerialPort-40-pin1" endpinid="Uno-19-1" pointList="-188,-340,-188,-324,-164,-324,-164,-288,-180,-288" />
 
 <item itemtype="Connector" uid="Connector-398" startpinid="SerialPort-40-pin0" endpinid="Uno-19-0" pointList="-188,-356,-196,-356,-196,-296,-180,-296" />
+
+<item itemtype="Connector" uid="Connector-374" startpinid="Uno-19-A5" endpinid="Node-375-0" pointList="-36,-296,-4,-296,-4,-376,-556,-376,-556,-228" />
+
+<item itemtype="Connector" uid="Connector-403" startpinid="Node-375-1" endpinid="Oscope-368-Pin1" pointList="-556,-228,-556,-24,-264,-24" />
+
+<item itemtype="Connector" uid="Connector-404" startpinid="Node-375-2" endpinid="Node-302-1" pointList="-556,-228,-508,-228" />
+
+<item itemtype="Connector" uid="Connector-378" startpinid="opAmp-10-output" endpinid="Node-379-0" pointList="-308,-236,-324,-236" />
+
+<item itemtype="Connector" uid="Connector-407" startpinid="Node-379-1" endpinid="Oscope-368-Pin0" pointList="-324,-236,-324,-56,-264,-56" />
+
+<item itemtype="Connector" uid="Connector-408" startpinid="Node-379-2" endpinid="Node-220-0" pointList="-324,-236,-332,-236" />
 
 </circuit>

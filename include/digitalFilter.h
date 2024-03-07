@@ -8,10 +8,10 @@ typedef struct
   unsigned int filterOrder;
 } DigitalFilter;
 
-void DigitalFilter_init(DigitalFilter *f, const int filterOrder, const double *const filterTaps)
+void DigitalFilter_init(DigitalFilter *f, const unsigned int filterOrder, const double *const filterTaps)
 {
   f->history = (double *)malloc(filterOrder * sizeof(double));
-  for (int i = 0; i < filterOrder; ++i)
+  for (unsigned int i = 0; i < filterOrder; ++i)
     f->history[i] = 0;
   f->taps = filterTaps;
   f->filterOrder = filterOrder;
@@ -28,7 +28,7 @@ void DigitalFilter_put(DigitalFilter *f, const double input)
 double DigitalFilter_get(DigitalFilter *f)
 {
   double acc = 0;
-  int index = f->last_index, i;
+  unsigned int index = f->last_index, i;
   for (i = 0; i < f->filterOrder; ++i)
   {
     index = index != 0 ? index - 1 : f->filterOrder - 1;

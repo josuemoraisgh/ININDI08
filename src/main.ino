@@ -9,7 +9,7 @@
 #define pinPWM 6                               // Configura o pino de Saida do PWM
 #define ANALOG_INTERVAL 1                      // analog read interval (milliseconds)
 #define PWM_INTERVAL 1                         // analog read interval (milliseconds)
-#define FREQ1 (50.0 / (1000.0 * PWM_INTERVAL)) // Em Hz/(1000*PWM_INTERVAL)
+#define FREQ1 (40.0 / (1000.0 * PWM_INTERVAL)) // Em Hz/(1000*PWM_INTERVAL)
 #define PERI1 floor(1.0 / FREQ1)
 #define FREQ2 (6 / (1000.0 * PWM_INTERVAL)) // Em Hz/(1000*PWM_INTERVAL)
 
@@ -93,8 +93,8 @@ void analogReadFunc() // Faz a leitura do sinal Analógico
 
 void pwmFunc() // Faz a leitura e escrita da serial
 {
-  analogWrite(pinPWM, 27 * sin(2 * PI * FREQ1 * time) + 100 * sin(2 * PI * FREQ2 * time) + 127);
-  // analogWrite(pinPWM, 127 * sin(2 * PI * FREQ1 * time) + 127.5);
+  // analogWrite(pinPWM, 27 * sin(2 * PI * FREQ1 * time) + 100 * sin(2 * PI * FREQ2 * time) + 127);
+  analogWrite(pinPWM, 127 * sin(2 * PI * FREQ1 * time) + 127.5);
   time++;
 }
 

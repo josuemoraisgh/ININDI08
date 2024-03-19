@@ -93,8 +93,8 @@ void analogReadFunc() // Faz a leitura do sinal Analógico
 
 void pwmFunc() // Faz a leitura e escrita da serial
 {
-  // analogWrite(pinPWM, 27 * sin(2 * PI * FREQ1 * time) + 100 * sin(2 * PI * FREQ2 * time) + 127);
-  analogWrite(pinPWM, 127 * sin(2 * PI * FREQ1 * time) + 127.5);
+  analogWrite(pinPWM, 27 * sin(2 * PI * FREQ1 * time) + 100 * sin(2 * PI * FREQ2 * time) + 127);
+  // analogWrite(pinPWM, 127 * sin(2 * PI * FREQ1 * time) + 127.5);
   time++;
 }
 

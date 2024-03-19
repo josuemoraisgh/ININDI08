@@ -11,7 +11,7 @@
 #define PWM_INTERVAL 1                         // analog read interval (milliseconds)
 #define FREQ1 (40.0 / (1000.0 * PWM_INTERVAL)) // Em Hz/(1000*PWM_INTERVAL)
 #define PERI1 floor(1.0 / FREQ1)
-#define FREQ2 (6 / (1000.0 * PWM_INTERVAL)) // Em Hz/(1000*PWM_INTERVAL)
+#define FREQ2 (6.0 / (1000.0 * PWM_INTERVAL)) // Em Hz/(1000*PWM_INTERVAL)
 
 unsigned long count = 0;
 unsigned long time = 0;

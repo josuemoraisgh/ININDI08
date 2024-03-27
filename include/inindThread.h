@@ -10,8 +10,8 @@
 #endif
 struct threadStruct {
   void (*func)(); //Função executada pela thread
-  int interval;//Instante atual da thread
-  int time; //Altera o tempo da thread
+  unsigned long interval;//Instante atual da thread
+  unsigned long time; //Altera o tempo da thread
 } thread[NUMTHREADS];
 
 void threads() {

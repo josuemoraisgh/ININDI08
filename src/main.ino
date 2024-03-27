@@ -1,9 +1,10 @@
 
 //////////////////////////////Funções das Trheads///////////////////////////////////
 #include <Arduino.h>
-#include <inindThread.h>
-#include <digitalFilter.h>
 #include <math.h>
+#include "digitalFilter.h"
+#define NUMTHREADS 2 //Deve-se sempre declarar o NUMTHREADS antes de "inindThread.h"
+#include "inindThread.h"
 
 #define pinANALOG A5      //Configura o pino de leitura do LUXÍMETRO
 #define pinPWM 6          //Configura o pino de Saida do PWM
@@ -105,7 +106,7 @@ void setup()                              // Código de configuração
   pinMode(pinANALOG, INPUT);
   pinMode(pinPWM, OUTPUT);
   DigitalFilter_init(&filter1,FILTER_ORDER1,filter_taps1);    
-  threadSetup(analogReadFunc,ANALOG_INTERVAL,pwmFunc,PWM_INTERVAL,NULL);//parametros:funcão,intervalo,funcão,intervalo,...,NULL  
+  threadSetup(analogReadFunc,ANALOG_INTERVAL,pwmFunc,PWM_INTERVAL);//parametros:funcão,intervalo,funcão,intervalo,...
 }
 
 void loop(){}
